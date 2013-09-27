@@ -1,0 +1,28 @@
+{
+  "name": "get-json-hq",
+  "version": "0.0.0",
+  "description": "wrapper for getting json with hyperquest",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "keywords": [
+    "hyperquest",
+    "json",
+    "browserify"
+  ],
+  "author": "David Guttman",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  },
+  "dependencies": {
+    "hyperquest": "0.1.8",
+    "event-stream": "3.0.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/tphummel/get-json.git"
+  },
+  "bugs": "http://github.com/tphummel/get-json/issues"
+}
