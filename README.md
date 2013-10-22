@@ -1,6 +1,6 @@
 # get-json
 
-wrapper for posting json with hyperquest
+wrapper for getting json with hyperquest
 
 [![Build Status](https://travis-ci.org/tphummel/get-json.png)](https://travis-ci.org/tphummel/get-json)  
 [![NPM](https://nodei.co/npm/get-json-hq.png?downloads=true)](https://nodei.co/npm/get-json-hq/)
