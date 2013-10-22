@@ -1,11 +1,4 @@
 language: node_js
 node_js:
-  - '0.11'
-  - '0.10'
-deploy:
-  provider: npm
-  email: "tphummel@gmail.com"
-  api_key:
-    secure: PAtgZdHesgrT7vtP91wSGhcxJ5Cg9QKZFKWgHcDH8JP+E+vCk2gMgp3qTOtm0wacSTltuEGFIduWyfCrU0kHbYP0yLnncYIbgKFlRdNZO10ibhI8CMshKvyMiABtj4PIL9LV5QkZM/seaY52rG9S+hIor3eAs4BWQs/VgV+X3gs=
-  on:
-    - tags: true
+  - "0.11"
+  - "0.10"
