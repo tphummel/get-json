@@ -12,7 +12,7 @@ module.exports = function(url, cb) {
     try {
       parsed = JSON.parse(body);
     } catch (err) {
-      return cb(err);
+      return cb(err, body);
     }
     return cb(null, parsed);
   }));
