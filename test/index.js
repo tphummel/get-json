@@ -9,7 +9,7 @@ var port = 3002
 
 function createServer(resp, cb) {
   var server = http.createServer(function (req, res) {
-    if(req.method !== "GET"){
+    if(req.method !== "GET" || resp == null){
       res.statusCode = 404;
     } else {
       res.write(resp);
@@ -31,12 +31,25 @@ describe("get-json tests", function(){
     });
   });
 
-  it("should return original body on err", function(done) {
-    var resp = 'whoops';
+  it("should return friendly JSON.parse errors", function(done) {
+    var resp = 'whoops'
+      , expected = 'Failed to parse response: '+ resp;
     createServer(resp, function(server) {
-      GetJson(url, function(err, res) {
+      GetJson(url, function(err) {
         assert(err instanceof Error, "error on invalid json");
-        assert(res === resp, "method should return original body");
+        assert.equal(err.message, expected, "method should return original body");
+        server.close()
+        done();
+      });
+    });
+  });
+
+  it("should treat invalid statusCodes as errors", function(done) {
+    var expected = 'Bad statusCode in response: '+ 404;
+    createServer(null, function(server) {
+      GetJson(url, function(err) {
+        assert(err instanceof Error, "error on invalid json");
+        assert.equal(err.message, expected, "method should return original body");
         server.close()
         done();
       });
