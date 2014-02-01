@@ -48,7 +48,7 @@ describe("get-json tests", function(){
     var expected = 'Bad statusCode in response: '+ 404;
     createServer(null, function(server) {
       GetJson(url, function(err) {
-        assert(err instanceof Error, "error on invalid json");
+        assert(err instanceof Error, "error on bad statusCode");
         assert.equal(err.message, expected, "method should return original body");
         server.close()
         done();
