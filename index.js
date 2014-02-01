@@ -9,16 +9,17 @@ module.exports = function(url, cb) {
 
   req.on('response', function(r) {
     if (r.statusCode >= 400) {
-      var err = new Error('Bad statusCode in response: '+ r.statusCode)
-      err.statusCode = r.statusCode
-      statusError = err
+      var err = new Error('Bad statusCode in response: '+ r.statusCode);
+      err.statusCode = r.statusCode;
+      statusError = err;
     }
   });
   
   req.pipe(wait(function(err, body) {
-    console.log('err, body', err, body);
     var parsed;
-    if (err) { return cb(err); }
+    if (err) return cb(err);
+    if (statusError) return cb(statusError);
+    
     try {
       parsed = JSON.parse(body);
     } catch (err) {
