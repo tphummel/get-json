@@ -5,13 +5,18 @@ wait = require('event-stream').wait;
 
 module.exports = function(url, cb) {
   var req = hq(url);
+  var statusError;
+
   req.on('response', function(r) {
     if (r.statusCode >= 400) {
-      req.destroy();
-      cb(new Error('Bad statusCode in response: '+ r.statusCode));
+      var err = new Error('Bad statusCode in response: '+ r.statusCode)
+      err.statusCode = r.statusCode
+      statusError = err
     }
   });
+  
   req.pipe(wait(function(err, body) {
+    console.log('err, body', err, body);
     var parsed;
     if (err) { return cb(err); }
     try {
@@ -19,6 +24,6 @@ module.exports = function(url, cb) {
     } catch (err) {
       return cb(new Error('Failed to parse response: '+ body));
     }
-    return cb(null, parsed);
+    return cb(statusError, parsed);
   }));
 };
