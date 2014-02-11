@@ -1,6 +1,6 @@
 {
   "name": "get-json-hq",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "wrapper for getting json with hyperquest",
   "main": "index.js",
   "scripts": {
