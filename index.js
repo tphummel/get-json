@@ -4,6 +4,12 @@ hq = require('hyperquest');
 wait = require('event-stream').wait;
 
 module.exports = function(url, cb) {
+  if (url.match(/^\//)) {
+    var protocol = window.location.protocol
+    var host = window.location.host
+    url = protocol + '//' + window.location.host + url
+  }
+  
   var req = hq(url);
   var statusError;
 
