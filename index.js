@@ -10,7 +10,7 @@ module.exports = function(url, cb) {
     url = protocol + '//' + window.location.host + url
   }
 
-  var req = hq(url);
+  var req = hq(url, {headers: {Accept: 'application/json'}});
   var statusError;
 
   req.on('response', function(r) {
