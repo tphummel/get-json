@@ -9,7 +9,7 @@ module.exports = function(url, cb) {
     var host = window.location.host
     url = protocol + '//' + window.location.host + url
   }
-  
+
   var req = hq(url);
   var statusError;
 
@@ -20,12 +20,12 @@ module.exports = function(url, cb) {
       statusError = err;
     }
   });
-  
+
   req.pipe(wait(function(err, body) {
     var parsed;
     if (err) return cb(err);
     if (statusError) return cb(statusError);
-    
+
     try {
       parsed = JSON.parse(body);
     } catch (err) {
